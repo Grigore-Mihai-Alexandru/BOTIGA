@@ -1,7 +1,8 @@
 import { useState } from "react";
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import axios from 'axios';
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 
 const AddProductCard = ({userId}) => {

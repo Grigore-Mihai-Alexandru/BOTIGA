@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Cookies } from "react-cookie";
 import CartProduct from "../components/cart/CartProduct";
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 const Cart = ({cartProducts, deviceSize, admin, logged}) => {
     const [products,setProducts] = useState([]);

@@ -3,7 +3,9 @@ import {Link} from "react-router-dom";
 import { useState } from "react";
 import { Cookies } from "react-cookie";
 import axios from "axios";
-const URL = "http://localhost:5000"
+import env from "react-dotenv";
+
+const URL = env.FETCH_API
 
 const ProductCard = ({id, _id, logged, name, price, photo, deviceSize}) => {
     const [hover,setHover] = useState(false);
@@ -32,6 +34,7 @@ const ProductCard = ({id, _id, logged, name, price, photo, deviceSize}) => {
         
     } 
 
+    const imagePath = URL + "/uploaded-products/"
     return (
         <div key={id} className="col-6 col-md-4 product-card text-center px-2 px-sm-4">
             <div className="position-relative d-flex justify-center">
@@ -54,7 +57,7 @@ const ProductCard = ({id, _id, logged, name, price, photo, deviceSize}) => {
                     <img style={{backgroundColor:"rgba(200,200,200,0.5)"}}
                         onMouseEnter={()=>setHover(true)}
                         className="product-card-img" 
-                        src={photo!==undefined?"/uploaded-products/"+photo:"/uploaded-products/fallback.jpg"}
+                        src={photo!==undefined?imagePath+photo:imagePath+"fallback.jpg"}
                         alt={name}
                     />
                 </Link>

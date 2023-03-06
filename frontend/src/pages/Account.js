@@ -1,12 +1,12 @@
 import "../styles/Account.css";
 import { useState } from "react";
-import { Link, useNavigate,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 const Account = ({logged, deviceSize, username, admin }) => {
-    const navigate = useNavigate();
     const [loginActive,setLoginActive] = useState(true);
     const [email,setEmail] = useState("");
     const [name,setName] = useState("");
@@ -39,10 +39,8 @@ const Account = ({logged, deviceSize, username, admin }) => {
             .then((req=>req.data))
         if(typeof req == "string" && req != ""){
             setLoggedIn("loggedIn",req);
-            // window.location.reload();
-            // navigate(0)
+            window.location.reload();
         }else console.log("wrong password")
-        navigate(0)
     }
     
 

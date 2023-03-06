@@ -5,7 +5,8 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import ProductCard from "../components/shop/ProductCard";
 import ProductQuantity from "../components/shop/ProductQuantity";
-const URL = "http://localhost:5000"
+import env from "react-dotenv";
+const URL = env.FETCH_API
 
 const Product = ({logged, deviceSize}) => {
     let {id} = useParams();
@@ -47,7 +48,7 @@ const Product = ({logged, deviceSize}) => {
 
         }
     }
-
+    const imagePath = URL + "/uploaded-products/"
     return (
         <div className="container" style={{maxWidth:deviceSize>1000?"1000px":"80%"}}>
             {product !== false &&
@@ -58,7 +59,7 @@ const Product = ({logged, deviceSize}) => {
                             className="product-photo"
                             style={{width:"80%"}}
                             aspectRatio={2/3}
-                            src={product.photo!==undefined?"/uploaded-products/"+product.photo:"/uploaded-products/fallback.jpg"}
+                            src={product.photo!==undefined?imagePath+product.photo:imagePath+"fallback.jpg"}
                             alt={product.name}
                         />
                     </div>
@@ -86,7 +87,6 @@ const Product = ({logged, deviceSize}) => {
                             <Link className="link nav-link d-inline-block" to="/shop">Cosmetics</Link>
                         </div>
                     </div>
-                    {/* related products */}
                 </div>
                 <div className="my-4">
                     <h2>Related Products</h2>
@@ -94,15 +94,15 @@ const Product = ({logged, deviceSize}) => {
                     {products && products.length>0 &&
                         <div className="row mx-auto">
                             {products.map(prod=>
-                                    <ProductCard 
-                                        deviceSize={deviceSize} 
-                                        key={prod._id} 
-                                        id={prod._id} 
-                                        logged={logged} 
-                                        name={prod.name} 
-                                        price={prod.price}
-                                        photo={prod.photo}
-                                    />
+                                <ProductCard 
+                                    deviceSize={deviceSize} 
+                                    key={prod._id} 
+                                    id={prod._id} 
+                                    logged={logged} 
+                                    name={prod.name} 
+                                    price={prod.price}
+                                    photo={prod.photo}
+                                />
                             )}
                         </div>
                     }

@@ -5,7 +5,8 @@ import Quantity from "./Quantity";
 import { Cookies } from "react-cookie";
 import axios from "axios";
 import CloseIcon from '@mui/icons-material/Close';
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 const CartProduct = ({id, name, price, quantity, cartProducts, photo, setItems, items, deviceSize}) => {
     const [qty,setQty] = useState(quantity)
@@ -56,6 +57,7 @@ const CartProduct = ({id, name, price, quantity, cartProducts, photo, setItems, 
             if(q.id===id)
                 quantity = q.quantity
         })
+    const imagePath = URL + "/uploaded-products/"
     return (
         <>
             {deviceSize >768 &&
@@ -65,7 +67,7 @@ const CartProduct = ({id, name, price, quantity, cartProducts, photo, setItems, 
                             <CloseIcon className="link remove-button" style={{cursor:"pointer"}} onClick={removeProduct}/>
                             <img 
                             className="cart-img mx-2 my-4" 
-                            src={photo!==undefined?"/uploaded-products/"+photo:"/uploaded-products/fallback.jpg"}
+                            src={photo!==undefined?imagePath+photo:imagePath+"fallback.jpg"}
                             alt={name}
                             />
                         </div>
@@ -91,7 +93,7 @@ const CartProduct = ({id, name, price, quantity, cartProducts, photo, setItems, 
                         <div className="col-3 col-md-3 d-flex justify-content-center ">
                             <img 
                                 className="cart-img mx-2 my-4" 
-                                src={photo!==undefined?"/uploaded-products/"+photo:"/uploaded-products/fallback.jpg"}
+                                src={photo!==undefined?imagePath+photo:imagePath+"fallback.jpg"}
                                 alt={name}
                                 />
                         </div>

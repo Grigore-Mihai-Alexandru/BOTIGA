@@ -5,7 +5,7 @@ const sharp = require("sharp");
 const path = require("path");
 const fse = require("fs-extra");
 
-const filePath = path.join(__dirname,"public","uploaded-products")
+const filePath = path.join(__dirname,"..","public","uploaded-products")
 
 const addProduct = async(req,res)=>{
     User.findById({_id:mongoose.mongo.ObjectId(req.body.userId)})
@@ -32,11 +32,9 @@ const updateProduct = async(req,res)=>{
     .then(async (r)=>{
         if(r.admin){
             if(req.file){
-                console.log("you added a file") 
                 const photoFilename = `${Date.now()}.jpg`;
                 await sharp(req.file.buffer).resize(640,960).jpeg({quality:60}).toFile(path.join(filePath,photoFilename))
                 const product = await Product.findById({_id:mongoose.mongo.ObjectId(req.body._id)})
-                console.log(path.join(filePath,product.photo))
                 fse.remove(path.join(filePath,product.photo))
                 req.cleanData.photo = photoFilename
             }

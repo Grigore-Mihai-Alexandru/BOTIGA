@@ -2,7 +2,8 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import ProductCard from "../components/shop/ProductCard";
 import "../styles/Shop.css";
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 const Shop = ({logged, deviceSize}) => {
     const [products,setProducts] = useState()

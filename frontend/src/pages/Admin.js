@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import AdminProductCard from '../components/admin/AdminProductCard';
 import AddProductCard from "../components/admin/AddProductCard";
 import axios from 'axios';
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 const Admin = ({userId, admin, logged, deviceSize}) => {
     const [products,setProducts] = useState([])

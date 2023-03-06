@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 
 const AdminProductCard = ({userId, _id, name, description, price, deviceSize, photo}) => {
@@ -34,6 +35,7 @@ const AdminProductCard = ({userId, _id, name, description, price, deviceSize, ph
             window.location.reload()
     }
 
+    const imagePath = URL + "/uploaded-products/"
     return (
         <div key={_id} className="col-12 col-sm-6 col-md-4 my-4 product-card text-center px-4">
                 {!isEditing &&
@@ -43,7 +45,7 @@ const AdminProductCard = ({userId, _id, name, description, price, deviceSize, ph
                                 <div className="image-div"></div>
                                 <img 
                                     className="product-card-img product-img" 
-                                    src={photo!==undefined?"/uploaded-products/"+photo:"/uploaded-products/fallback.jpg"}
+                                    src={photo!==undefined?imagePath+photo:imagePath+"fallback.jpg"}
                                     alt={name}
                                 />
                             </Link>

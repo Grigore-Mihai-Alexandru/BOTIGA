@@ -13,7 +13,8 @@ import Cart from "./pages/Cart";
 import Product from "./pages/Product";
 import Contact from "./pages/Contact";
 import ErrorPage from "./pages/404";
-const URL="http://localhost:5000";
+import env from "react-dotenv";
+const URL = env.FETCH_API;
 
 
 function App() {
@@ -77,9 +78,9 @@ function App() {
     )
     else
       return (
-        <Router forceRefresh={true}>
+        <Router >
           <Layout cartProducts={cartProducts} deviceSize={deviceSize} admin={admin} logged={logged}>
-            <Routes forceRefresh={true}>
+            <Routes>
               <Route exact path="/" element={<Home logged={logged} deviceSize={deviceSize}/>}/>
               <Route exact path="/admin" element={<Admin deviceSize={deviceSize} userId={userId} logged={logged} admin={admin}/>}/>
               <Route exact path="/shop" element={<Shop deviceSize={deviceSize} logged={logged} admin={admin}/>}/>

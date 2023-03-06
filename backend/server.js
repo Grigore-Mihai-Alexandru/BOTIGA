@@ -6,17 +6,15 @@ const cors = require("cors");
 const multer = require("multer");
 const upload = multer();
 const fse = require("fs-extra");
-const fileUpload = require("express-fileupload");
-
 const port = process.env.PORT || 5000;
 const dbURI = process.env.MONGO_URL;
 //connect to mongodb
 if (!dbURI)
-throw new Error(
+    throw new Error(
     'Please define the MONGO_URL environment variable inside .env.local'
     );
     
-    mongoose.connect(dbURI,{useNewUrlParser: true , useUnifiedTopology:true})
+mongoose.connect(dbURI,{useNewUrlParser: true , useUnifiedTopology:true})
     .then((res)=>app.listen(port))
     .catch((err)=>console.log(err));
     
@@ -27,7 +25,6 @@ mongoose.set('strictQuery', true);
 const imgPath = "./public/uploaded-products";
 fse.ensureDirSync(imgPath);
 
-// app.use(fileUpload())
 app.use(express.static('public'))
 app.use(cors());
 app.use(express.json())
