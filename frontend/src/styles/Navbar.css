@@ -1,0 +1,33 @@
+.products-count{
+    width: 25px;
+    height: 25px;
+    margin: -10px 0 0 -13px;
+    background-color: red;
+    border-radius: 50%;
+    border:1px solid white;
+    line-height: 20px;
+    text-align: center;
+    color:white;
+}
+nav{
+    height: 90px;
+}
+
+/* sidebar */
+.sidebar{
+    min-height: 100vh;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 1);
+ 
+}
+.sidebar-list{
+    list-style-type: none;
+}
+.sidebar-list li a{
+    color:rgb(0, 0, 0);
+    transition:.3s;
+}
+
+.sidebar-list li a :hover{
+    color: rgb(94, 93, 93);
+}

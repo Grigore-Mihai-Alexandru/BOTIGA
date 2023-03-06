@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+:root{
+    --black-text:rgba(12,12,12,0.8)
+}
+*{
+    margin: 0;
+    padding: 0;
+    color:var(--black-text);
+    font-family: 'Merriweather', serif;
+}
+.black-button{
+    background-color: #212121;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    transition: 0.4s;
+}
+
+.black-button:hover{
+    background-color: #757575;
+}
+.black-button-disabled{
+    background-color: #757575;
+}

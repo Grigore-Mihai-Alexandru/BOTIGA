@@ -1,0 +1,5 @@
+.login-form, .register-form{
+    width: 90%;
+    margin: auto;
+    padding: 20px 50px;
+}

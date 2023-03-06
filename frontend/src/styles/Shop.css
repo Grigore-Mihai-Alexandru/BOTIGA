@@ -1,0 +1,24 @@
+.product-card{
+    margin: 40px 0;
+    padding: 0;
+    position: relative;
+}
+.product-card-img{
+    position: relative;
+    width: 100%;
+    /* width: 230px; */
+}
+
+.image-hover{
+    background-color: rgba(200, 200, 200, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.image-hover-btn{
+    top:47%;
+}

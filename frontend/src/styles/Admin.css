@@ -1,0 +1,16 @@
+.image-div{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+}
+.editing-img-div{
+    position: relative;
+    width: 100%;
+}
+
+.product-img{
+    aspect-ratio: 11/16;
+}
